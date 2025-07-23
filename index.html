@@ -35,7 +35,7 @@
         wifiConnect: "Свържи се с WiFi",
         leaveReview: "Остави отзив",
         callUs: "Обади ни се",
-        wifiName: "Villa_Paradise_Guest",
+        wifiName: "---------",
         wifiPassword: "Welcome2024",
         wifiInstructions: "WiFi данните са копирани!",
         reviewText: "Споделете опита си с други гости",
@@ -54,7 +54,7 @@
         wifiConnect: "Connect to WiFi",
         leaveReview: "Leave a Review",
         callUs: "Call Us",
-        wifiName: "Villa_Paradise_Guest",
+        wifiName: "---------",
         wifiPassword: "Welcome2024",
         wifiInstructions: "WiFi credentials copied to clipboard!",
         reviewText: "Share your experience with other guests",
@@ -134,7 +134,7 @@
     function handleWifi() {
       const t = translations[language];
       navigator.clipboard.writeText(t.wifiPassword).then(() => {
-        alert(`WiFi password copied: ${t.wifiPassword}`);
+        alert(`WiFi password added to clipbord`);
       }).catch(() => {
         alert('Failed to copy WiFi password. Please copy manually.');
       });
