@@ -5,8 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to Summerland</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url('bg_wallpaper.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+      position: relative;
+      color: white;
+    }
+    /* Overlay for better text readability */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+      z-index: -1;
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
+<body class="min-h-screen p-4">
+
+  <!-- Overlay for darkening the background image -->
+  <div id="overlay"></div>
 
   <!-- Language Dropdown (fixed positioning) -->
   <div class="fixed top-4 right-4 z-50 max-w-[90%]">
@@ -81,17 +103,17 @@
 
       document.getElementById("content").innerHTML = `
         <div class="text-center pt-16 pb-8">
-          <h1 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">${t.welcome}</h1>
-          <p class="text-white/90 text-lg drop-shadow">${t.subtitle}</p>
+          <h1 class="text-3xl font-bold drop-shadow-lg">${t.welcome}</h1>
+          <p class="text-lg drop-shadow">${t.subtitle}</p>
         </div>
 
         <div class="backdrop-blur-md bg-white/20 border border-white/30 shadow-xl p-6 rounded-lg">
-          <p class="text-white text-center leading-relaxed">${t.message}</p>
+          <p class="text-center leading-relaxed">${t.message}</p>
         </div>
 
         <div class="backdrop-blur-md bg-white/20 border border-white/30 shadow-xl p-6 rounded-lg">
-          <h3 class="text-white font-semibold mb-4 text-center">${t.amenities}</h3>
-          <div class="grid grid-cols-2 gap-4 text-white/90 text-sm">
+          <h3 class="font-semibold mb-4 text-center">${t.amenities}</h3>
+          <div class="grid grid-cols-2 gap-4 text-sm">
             <div class="flex items-center gap-2">🕒 ${t.checkin}</div>
             <div class="flex items-center gap-2">🕒 ${t.checkout}</div>
             <div class="flex items-center gap-2">👥 ${t.guests}</div>
@@ -100,7 +122,7 @@
         </div>
 
         <div class="space-y-4">
-          <button onclick="handleWifi()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 text-white hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleWifi()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
             📶
             <div class="text-left ml-3">
               <div class="font-semibold">${t.wifiConnect}</div>
@@ -108,7 +130,7 @@
             </div>
           </button>
 
-          <button onclick="handleReview()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 text-white hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleReview()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
             ⭐
             <div class="text-left ml-3">
               <div class="font-semibold">${t.leaveReview}</div>
@@ -116,7 +138,7 @@
             </div>
           </button>
 
-          <button onclick="handleCall()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 text-white hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleCall()" class="w-full h-16 backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
             📞
             <div class="text-left ml-3">
               <div class="font-semibold">${t.callUs}</div>
@@ -134,7 +156,7 @@
     function handleWifi() {
       const t = translations[language];
       navigator.clipboard.writeText(t.wifiPassword).then(() => {
-        alert(`WiFi password added to clipbord`);
+        alert(t.wifiInstructions);
       }).catch(() => {
         alert('Failed to copy WiFi password. Please copy manually.');
       });
