@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+  <meta name="description" content="Welcome to Summerland Villa – your relaxing beachfront home away from home. Enjoy comfort, amenities, and easy access to the beach." />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>Welcome to Summerland</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -33,8 +35,8 @@
   <!-- Language Dropdown (fixed positioning) -->
   <div class="fixed top-4 right-4 z-50 max-w-[90%]">
     <div class="relative inline-block">
-      <button id="language-btn" class="backdrop-blur-md bg-white/20 border border-white/30 text-white hover:bg-white/30 rounded-full px-4 py-2 flex items-center text-sm">
-        🌐 <span id="lang-flag" class="ml-2">BG</span>
+      <button id="language-btn" aria-label="Change language" class="backdrop-blur-md bg-white/20 border border-white/30 text-white hover:bg-white/30 active:scale-95 transition-transform duration-100 rounded-full px-4 py-2 flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-white/60">
+        🌐 <span id="lang-flag" class="ml-2">🇧🇬</span>
       </button>
 
       <div id="dropdown-menu" class="absolute right-0 mt-2 w-40 sm:w-36 backdrop-blur-md bg-white/20 border border-white/30 text-white text-sm rounded-md hidden shadow-lg">
@@ -47,7 +49,7 @@
   <!-- Main Content -->
   <div class="max-w-md mx-auto space-y-6" id="content"></div>
   <!-- Toast notification for feedback -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded shadow-lg text-sm z-50 hidden"></div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded shadow-lg text-sm z-50 hidden" role="status" aria-live="polite"></div>
   <script>
     const translations = {
       bg: {
@@ -108,7 +110,6 @@
 
     function renderContent() {
       const t = translations[language]
-
       document.getElementById("content").innerHTML = `
         <div class="text-center pt-16 pb-8">
           <h1 class="text-3xl font-bold drop-shadow-lg">${t.welcome}</h1>
@@ -130,7 +131,7 @@
         </div>
 
         <div class="space-y-4">
-          <button onclick="handleWifi()" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleWifi()" aria-label="Copy WiFi password" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 active:scale-95 transition-transform duration-100 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/60">
             📶
             <div class="text-left ml-3">
               <div class="font-semibold">${t.wifiConnect}</div>
@@ -138,7 +139,7 @@
             </div>
           </button>
 
-          <button onclick="handleReview()" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleReview()" aria-label="Leave a review" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 active:scale-95 transition-transform duration-100 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/60">
             ⭐
             <div class="text-left ml-3">
               <div class="font-semibold">${t.leaveReview}</div>
@@ -146,7 +147,7 @@
             </div>
           </button>
 
-          <button onclick="handleCall()" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg">
+          <button onclick="handleCall()" aria-label="Call us" class="w-full h-16 min-h-[56px] backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 active:scale-95 transition-transform duration-100 shadow-lg hover:shadow-xl flex items-center px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/60">
             📞
             <div class="text-left ml-3">
               <div class="font-semibold">${t.callUs}</div>
