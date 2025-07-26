@@ -1,3 +1,3 @@
-# VillaKrapec.github.io
-Web mini for QR code access
+Welcome to krapets
+ 404
 https://kyojiyamura.github.io/VillaKrapec/
